@@ -5,6 +5,6 @@
 (rename .env.sample to .env)
 
 2. Run the project 
-'''bash
+```
 php artisan serve
-'''
+```
