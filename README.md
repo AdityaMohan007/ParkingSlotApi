@@ -1,8 +1,8 @@
 # Parking Slot Booking API
 
-Instructions
+# Instructions
 1. Provide Database connection string in .env.sample file in project root
 (rename .env.sample to .env)
 
-Run the project
+2. Run the project
 php artisan serve
