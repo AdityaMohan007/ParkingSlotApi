@@ -7,95 +7,112 @@
 </head>
 
 <style>
-    body {
+    {{--  body {
         display: flex;
         justify-content: center;
+    }  --}}
+
+    .one
+    {
+        margin-top: 70px;
     }
 
-    .one {
-        margin-top: 70px;
-        {{--  border: 3px solid rgb(0, 0, 0);  --}}
+    .form-one
+    {
         border-radius: 0.45rem;
         background-color: #eeeeee;
         padding: 40px;
         width: 50%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .heading {
+    .heading
+    {
         text-align: center;
         padding-bottom: 10px;
         font-size: 30px;
     }
 
+
+
 </style>
 
 <body>
+    <div class="container">
 
-    {{--  <form action="" method="POST">
-        @csrf
+        {{--  <a href="{{ route('bookingDetails') }}"><button type="submit" class="btn btn-primary">Book Slot</button></a>  --}}
+
         <div class="one">
-            <h5 class="heading">LOGIN FORM</h5>
+            <form action="" method="POST" class="row g-3 form-one">
+                @csrf
 
-            <div class="form-outline mb-4">
-                <input type="email" name="email" class="form-control" placeholder="Email address">
-            </div>
+                <h5 class="heading ">Booking a Slot</h5>
 
-            <div class="form-outline mb-4">
-                <input type="password" name="password"  class="form-control" placeholder="password">
-            </div>
+                <div class="col-md-6">
+                    <label class="form-label">Customer Name</label>
+                    <input type="text" name="customer_name" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Driving License</label>
+                    <input type="file" name="driving_license" class="form-control">
+                </div>
+                <div class="col-md-7">
+                    <label class="form-label">Vehicle Number</label>
+                    <input type="text" name="vehicle_number" class="form-control" placeholder="Eg: KL47 H 4348">
+                </div>
+                <div class="col-md-7">
+                    <label class="form-label">Select Date</label>
+                    <input type="date" name="date" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Start Time</label>
+                    <select name="start_time" id="inputState" class="form-select">
+                        <option selected> -- select start time -- </option>
+                        <option value="1">01:00</option>
+                        <option value="2">02:00</option>
+                        <option value="3">03:00</option>
+                        <option value="4">04:00</option>
+                        <option value="5">05:00</option>
+                        <option value="6">06:00</option>
+                        <option value="7">07:00</option>
+                        <option value="8">08:00</option>
+                        <option value="9">09:00</option>
+                        <option value="10">10:00</option>
+                        <option value="11">11:00</option>
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="15">15:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
+                        <option value="18">18:00</option>
+                        <option value="19">19:00</option>
+                        <option value="20">20:00</option>
+                        <option value="21">21:00</option>
+                        <option value="22">22:00</option>
+                        <option value="23">23:00</option>
+                        <option value="24">24:00</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Select Hours</label>
+                    <input type="text" name="hours" class="form-control">
+                </div>
 
-            <div class="row"><button type="submit" class="btn btn-primary btn-block">SUBMIT</button></div>
+                <div class="col-12">
+                    <a href=""><button type="submit" class="btn btn-primary">Book Slot</button></a>
+                </div>
+
+            </form>
+
         </div>
-    </form>  --}}
-    <a href="{{ route('bookingDetails') }}"><button type="submit" class="btn btn-primary">Book Slot</button></a>
-
-    <div class="one">
-        <form action="{{ route('bookingDetails') }}" method="" class="row g-3">
-            @csrf
-
-            <h5 class="heading ">Booking a Slot</h5>
-
-            <div class="col-md-6">
-                <label class="form-label">Customer Name</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Driving License</label>
-                <input type="file" class="form-control">
-            </div>
-            <div class="col-md-7">
-                <label class="form-label">Vehicle Number</label>
-                <input type="text" class="form-control" placeholder="Eg: KL47 H 4348">
-            </div>
-            <div class="col-md-7">
-                <label class="form-label">Select Date</label>
-                <input type="date" class="form-control">
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Start Time</label>
-                <select id="inputState" class="form-select">
-                    <option selected> -- select time -- </option>
-                    <option>...</option>
-                </select>
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Select Hours</label>
-                <select id="inputState" class="form-select">
-                    <option selected> -- select hours -- </option>
-                    <option>...</option>
-                </select>
-            </div>
-
-            <div class="col-12">
-                <a href="{{ route('bookingDetails') }}"><button type="" class="btn btn-primary">Book Slot</button></a>
-            </div>
-
-        </form>
-
     </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>

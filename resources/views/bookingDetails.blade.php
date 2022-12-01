@@ -36,13 +36,13 @@
         </div>
 
         <div class="one">
-            <table class="table table-hover">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Vehicle Number</th>
-                        <th scope="col">Slot</th>
-                        <th scope="col">Appoinment Number</th>
+                        <th scope="col">Slot Number</th>
+                        <th scope="col">Appointment Number</th>
                         <th scope="col">Date</th>
                         <th scope="col">Start Time</th>
                         <th scope="col">End Time</th>
@@ -51,7 +51,53 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @foreach ($details as $item)
+                     <tr>
+                        <td>{{ $item->customer->name }}</td>
+                        <td>{{ $item->customer->vehicle_number }}</td>
+                        <td>{{ $item->slot_no }}</td>
+                        {{--  Below code is done to generate last 3 digits of Appoinment Number  --}}
+                        <?php
+                            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            $randomString = '';
+                            for ($i=0; $i<3; $i++)
+                            {
+                                $index = rand(0, strlen($characters) - 1);
+                                $randomString .= $characters[$index];
+                                {{--  echo $randomString;  --}}
+                            }
+                        ?>
+                        <td>{{ $item->slot_no.$randomString }}</td>
+                        <td>{{ $item->date }}</td>
+                        <td>{!! $item->start_time.':'.'00' !!}</td>
+                        <td>{!! $item->end_time.':'.'00' !!}</td>
+                        <td>{{ $item->hours }}</td>
+                        <?php
+                            $hours = $item->hours;
+                            if ($hours == 1) {
+                                $parkingFee = 5;
+                            }
+                            if ($hours == 2) {
+                                $parkingFee = 8;
+                            }
+                            if ($hours == 3) {
+                                $parkingFee = 10;
+                            }
+                            {{--  Any additional hour after 3 hours is supposed to be incremented by Rs.5 along with Rs.10  --}}
+                            if ($hours > 3) {
+                                $diff = $hours - 3;
+                                $parkingFee = 10 + ($diff * 5);
+                            }
+
+
+                        ?>
+
+                        <td>{{ $item->parking_fee.$parkingFee }}</td>
+
+                    </tr>
+                    @endforeach
+
+                    {{-- /* <tr>
                         <td>Anshid P</td>
                         <td>KL47 H 4743</td>
                         <td>A01</td>
@@ -61,7 +107,7 @@
                         <td>08.00</td>
                         <td>3 hours</td>
                         <td>Rs.10</td>
-                    </tr>
+                    </tr>*/  --}}
 
                 </tbody>
             </table>

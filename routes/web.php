@@ -19,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [ParkController::class, 'bookingForm'])->name('bookingForm');
+Route::post('/', [ParkController::class, 'bookingFormPost'])->name('bookingFormPost');
+
 Route::get('/booking-details', [ParkController::class, 'bookingDetails'])->name('bookingDetails');
