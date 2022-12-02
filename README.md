@@ -1,7 +1,7 @@
 # Parking Slot Booking API
 
 ## Instructions
-1. Provide Database connection string in .env.sample file in project root
+1. Provide Database connection string in .env.sample file in project root. The DB to work with is uploaded in database directory.
 (rename .env.sample to .env)
 
 2. Run the project 
