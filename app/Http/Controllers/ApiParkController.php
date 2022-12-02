@@ -7,11 +7,12 @@ use App\Models\Customer;
 use App\Models\Slot;
 use Illuminate\Http\Request;
 
-class ParkController extends Controller
+class ApiParkController extends Controller
 {
     public function bookingForm()
     {
-        return view('bookingForm');
+        return Booking::all();
+        // return view('bookingForm');
     }
     public function bookingFormPost(Request $request)
     {
@@ -66,7 +67,8 @@ class ParkController extends Controller
         $book->parking_fee = $parkingFee;
         $book->save();
 
-        return redirect(route('bookingDetails'));
+        return Booking::all()->sortByDesc('id')->take(1);
+        // return ["Result" => "Parking Slot Booked"];
     }
 
     public function bookingDetails()
@@ -77,5 +79,4 @@ class ParkController extends Controller
 
         return view('bookingDetails', compact('details'));
     }
-
 }

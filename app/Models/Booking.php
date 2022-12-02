@@ -9,8 +9,10 @@ class Booking extends Model
 {
     use HasFactory;
 
-    public function customer()
-    {
+    public function customer() {
         return $this->belongsTo(Customer::class)->withDefault();
+    }
+    public function slot() {
+        return $this->belongsTo(Slot::class)->withDefault();
     }
 }

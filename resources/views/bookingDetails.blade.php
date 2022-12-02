@@ -53,46 +53,15 @@
                 <tbody>
                     @foreach ($details as $item)
                      <tr>
-                        <td>{{ $item->customer->name }}</td>
-                        <td>{{ $item->customer->vehicle_number }}</td>
-                        <td>{{ $item->slot_no }}</td>
-                        {{--  Below code is done to generate last 3 digits of Appoinment Number  --}}
-                        <?php
-                            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                            $randomString = '';
-                            for ($i=0; $i<3; $i++)
-                            {
-                                $index = rand(0, strlen($characters) - 1);
-                                $randomString .= $characters[$index];
-                                {{--  echo $randomString;  --}}
-                            }
-                        ?>
-                        <td>{{ $item->slot_no.$randomString }}</td>
+                        <td>{{ $item->customer_name }}</td>
+                        <td>{{ $item->vehicle_number }}</td>
+                        <td>{{ $item->slot->name }}</td>
+                        <td>{{ $item->appointment_no }}</td>
                         <td>{{ $item->date }}</td>
                         <td>{!! $item->start_time.':'.'00' !!}</td>
                         <td>{!! $item->end_time.':'.'00' !!}</td>
                         <td>{{ $item->hours }}</td>
-                        <?php
-                            $hours = $item->hours;
-                            if ($hours == 1) {
-                                $parkingFee = 5;
-                            }
-                            if ($hours == 2) {
-                                $parkingFee = 8;
-                            }
-                            if ($hours == 3) {
-                                $parkingFee = 10;
-                            }
-                            {{--  Any additional hour after 3 hours is supposed to be incremented by Rs.5 along with Rs.10  --}}
-                            if ($hours > 3) {
-                                $diff = $hours - 3;
-                                $parkingFee = 10 + ($diff * 5);
-                            }
-
-
-                        ?>
-
-                        <td>{{ $item->parking_fee.$parkingFee }}</td>
+                        <td>{{ 'Rs.'.$item->parking_fee }}</td>
 
                     </tr>
                     @endforeach
